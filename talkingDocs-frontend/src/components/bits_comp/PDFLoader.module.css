@@ -1,0 +1,50 @@
+.spinner {
+    margin-top: 200px;
+    width: 90px;
+    height: 90px;
+    border-radius: 100%;
+    background-color: transparent;
+    border: 10px solid aqua;
+    display: grid;
+    place-items: center;
+    animation: zoomin 1s infinite alternate-reverse;
+    position: relative;
+}
+
+.inner {
+    background-color: transparent;
+    width: 50%;
+    height: 50%;
+    border-radius: 100%;;
+}
+
+.innermsg{
+    display: flex;
+    justify-content: center;
+    font-size: small;
+    margin-top: 70px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+@keyframes zoomin {
+    0% {
+        transform: scale(1);
+        box-shadow: 0 0 150px 10px rgb(16, 71, 71);
+    }
+
+    100% {
+        transform: scale(1.5);
+        box-shadow: 0 0 150px 10px aqua;
+    }
+}
+/* @keyframes zoomout {
+    0% {
+        transform: scale(1);
+        box-shadow: 0 0 150px 10px rgb(16, 71, 71);
+    }
+
+    100% {
+        transform: scale(2);
+        box-shadow: 0 0 150px 10px #000;
+    }
+} */
