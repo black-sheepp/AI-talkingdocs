@@ -1,6 +1,15 @@
 # Project README: ReactJS with Vite Framework, MongoDB, JWT, Node.js, and More
 
-Ilcome to the README for my exciting project! In this project, I've combined various technologies and tools to create a modern AI Chat application with a focus on user authentication, authorization, and a delightful user interface. Let's dive into the details.
+## Project Challenges
+
+When I was given the task to work on the "Talking Docs: Give PDFs a Voice with AI" project, my approach was to make it user-friendly and visually appealing. For the front-end part, I used Vite ReactJS along with Tailwind CSS to make the user interface look good, and I used Styled Module CSS to style components. I also added some shadow effects to buttons, forms, and input fields to make them look nice.
+
+On the back-end, I used Node.js with Express.js for handling requests and MongoDB to store user information and manage user logins. To keep things secure, I used JSON Web Tokens for user authentication, making sure that only authorized users could access certain parts of the project.
+
+For handling PDF files, I used a tool called Multer to store the files and their locations in the database. Then, I processed the uploaded PDFs, breaking them into smaller parts and storing them in a special storage system provided by Langchain.
+
+Working with Langchain, which is a new topic for me to explore, was a bit challenging at first. But I found it interesting and decided to dive deeper into it. Through research and learning, I managed to overcome the challenges and come up with a unique solution that aligns with the project's goals. This journey expanded my skills and gave me a better understanding of the possibilities offered by advanced technology like Langchain and RAG.
+
 
 ## Table of Contents
 
@@ -13,7 +22,6 @@ Ilcome to the README for my exciting project! In this project, I've combined var
 7. [File Upload](#file-upload)
 8. [Frontend and UI](#frontend-and-ui)
 9. [API Endpoints](#api-endpoints)
-10. [Acknowledgments](#acknowledgments)
 
 ## Introduction
 
@@ -47,8 +55,8 @@ Before running the project, you need to set up  environment and configuration va
 3. **Backend Setup**:
    - Navigate to the backend directory and run `npm install` to install backend dependencies.
    - Create a `.env` file in the backend directory and set the following variables:
-     - `MONGODB_USER`:  MongoDB Atlas connection username.
-     - `MONGODB_PASSWORD`:  MongoDB Atlas connection password.
+     - `username`:  MongoDB Atlas connection username.
+     - `password`:  MongoDB Atlas connection password.
      - `JWT_SECRET`:  secret for JWT token generation.
      - `OPENAI_API_KEY`:  OpenAI API key.
 
@@ -88,3 +96,4 @@ The frontend is designed with a user-friendly interface using Tailwind CSS and t
 ## API Endpoints
 
 The backend provides various API endpoints to manage user data, authentication, and file uploads. These endpoints are documented in the code, and you can find more details in the backend's codebase.
+
