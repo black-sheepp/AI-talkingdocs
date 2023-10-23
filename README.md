@@ -25,7 +25,7 @@ Working with Langchain, which is a new topic for me to explore, was a bit challe
 
 ## Introduction
 
-My project is a PDFChat application built using ReactJS, Vite Framework, MongoDB for data storage, JWT for user authentication and authorization, and Node.js with Express.js for the backend. It also utilizes various libraries and tools for efficient development, including dotenv for environment variable management, Langchain and its vector store for language processing, Multer for file uploads, and Axios for making requests to the backend. The project is styled with Tailwind CSS and Shadcn Framework for a sleek user interface.
+My project is a PDFChat application built using ReactJS Vite Framework, MongoDB for data storage, JWT for user authentication and authorization, and Node.js with Express.js for the backend. It also utilizes various libraries and tools for efficient development, including dotenv for environment variable management, Langchain and its vector store for language processing, Multer for file uploads, and Axios for making requests to the backend. The project is styled with Tailwind CSS and Shadcn Framework for a sleek user interface.
 
 ## Technologies Used
 
@@ -50,25 +50,26 @@ Before running the project, you need to set up  environment and configuration va
 
 2. **Frontend Setup**:
    - Navigate to the frontend directory and run `npm install` to install frontend dependencies.
-   - Use `npm run dev` to start the development server.
+   - Use `npm run dev` to start the frontend.
 
 3. **Backend Setup**:
    - Navigate to the backend directory and run `npm install` to install backend dependencies.
    - Create a `.env` file in the backend directory and set the following variables:
+     - `PORT`: Port number on server will run.(By default 8080)
      - `username`:  MongoDB Atlas connection username.
      - `password`:  MongoDB Atlas connection password.
      - `JWT_SECRET`:  secret for JWT token generation.
      - `OPENAI_API_KEY`:  OpenAI API key.
 
 4. **Database Setup**:
-   - Configure  MongoDB database using the providing your own credentials.
+   - Configure  MongoDB database using the providing your own credentials in dotenv.
 
 5. **Start the Backend**:
    - Run `npm start` to start the backend server.
 
 6. **Access the Application**:
    - Visit `http://localhost:5173` in  browser to access the application.
-   - Open `http://localhost:8080` in  your terminal to access the backend part application.
+   - Open Default `http://localhost:8080` or `http://localhost:PORT` in  your terminal to access the backend part application.
 
 ## Project Structure
 
