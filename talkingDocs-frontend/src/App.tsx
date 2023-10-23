@@ -5,24 +5,16 @@ import Nav from "./components/Nav";
 import { ThemeProvider } from "@/components/theme-provider";
 import { useEffect, useState } from "react";
 import PDFLoader from "./components/bits_comp/PDFLoader";
-import TextLoader from "./components/bits_comp/TextLoader";
 import axios from "axios";
 
 function App() {
-	const [form, setForm] = useState({});
-	const [logout, setLogout] = useState(true);
-	const [pdfFile, setPdfFile] = useState();
-	const [isLoading, setIsLoading] = useState(false);
-	const [upload, setUpload] = useState(false);
+	const [form, setForm] = useState({}); // User form data
+	const [logout, setLogout] = useState(true); // User logout status
+	const [pdfFile, setPdfFile] = useState(); // Selected PDF file for upload
+	const [isLoading, setIsLoading] = useState(false); // Loading status
+	const [upload, setUpload] = useState(false); // Upload status
 
-	useEffect(() => {
-		const user = localStorage.getItem("user");
-		if (user) {
-			setForm(JSON.parse(user));
-			setLogout(false);
-		}
-	}, []);
-
+	// Handle changes in the user form
 	const handleForm = (e: any) => {
 		setForm({
 			...form,
@@ -30,6 +22,7 @@ function App() {
 		});
 	};
 
+	// Handle form submission for user sign-up
 	const handleSubmit = async (e: any) => {
 		e.preventDefault();
 		const response = await fetch("http://localhost:8080/sign-up", {
@@ -43,14 +36,7 @@ function App() {
 		localStorage.setItem("user", JSON.stringify(data));
 	};
 
-	const handlelogout = async () => {
-		await fetch("http://localhost:8080/logout", {
-			method: "GET",
-		});
-		await localStorage.setItem("user", "");
-		setLogout(true);
-	};
-
+	// Handle form submission for user sign-in
 	const handleSignIn = async (e: any) => {
 		e.preventDefault();
 		const response = await fetch("http://localhost:8080/sign-in", {
@@ -65,6 +51,25 @@ function App() {
 		localStorage.setItem("user", JSON.stringify(data));
 	};
 
+	// Handle user logout
+	const handlelogout = async () => {
+		await fetch("http://localhost:8080/logout", {
+			method: "GET",
+		});
+		await localStorage.setItem("user", "");
+		setLogout(true);
+	};
+
+	// Use useEffect to load user data from local storage when the component mounts
+	useEffect(() => {
+		const user = localStorage.getItem("user");
+		if (user) {
+			setForm(JSON.parse(user));
+			setLogout(false);
+		}
+	}, []);
+
+	// Function to extract the username from user data in local storage
 	function username(): string | null {
 		function getNameValueFromJSON(jsonString: any): any | null {
 			try {
@@ -84,6 +89,7 @@ function App() {
 		return nameValue;
 	}
 
+	// Function to extract the authentication token from user data in local storage
 	function fetchToken(): string | null {
 		const jsonString = localStorage.getItem("user");
 		function getNameValueFromJSON(jsonString: any): any | null {
@@ -102,6 +108,7 @@ function App() {
 		return tokenValue;
 	}
 
+	// Function to extract the user ID from user data in local storage
 	function getUserId(): string | null {
 		const jsonString = localStorage.getItem("user");
 		function getNameValueFromJSON(jsonString: any): any | null {
@@ -120,18 +127,23 @@ function App() {
 		return _id;
 	}
 
+	// Handle the selection of a PDF file for upload
 	const handleFileUpload = (event: any) => {
 		console.log(event.target.files);
 		setPdfFile(event.target.files[0]);
 	};
 
+	// Handle the PDF file upload
 	const handlepdf = async (event: any) => {
 		event.preventDefault();
 		setIsLoading(true);
+
+		// Create a FormData object and append the selected PDF file
 		const formData = new FormData();
 		formData.append("pdf_location", pdfFile);
 
 		try {
+			// Make a POST request to upload the PDF file
 			const response = await axios.post(`http://localhost:8080/pdf-upload/${getUserId()}`, formData, {
 				headers: { "Content-Type": "multipart/form-data" },
 			});
@@ -145,9 +157,10 @@ function App() {
 		}
 	};
 
+	// Reset the upload status
 	const resetUpload = () => {
 		setUpload(false);
-	}
+	};
 	return (
 		<ThemeProvider defaultTheme='dark' storageKey='vite-ui-theme'>
 			<div className='h-screen'>
@@ -161,15 +174,17 @@ function App() {
 					logoutStatus={logout}
 				/>
 				<div className='flex flex-col justify-center px-8 mt-10 lg:px-20'>
-					{!logout ? (
-						isLoading ? (
+					{!logout ? ( // If the user is not logged out
+						isLoading ? ( // If data is loading, show a PDFLoader component
 							<PDFLoader />
-						) : upload ? (
+						) : upload ? ( // show a ChatBot component with a resetUpload function
 							<ChatBot resetUpload={resetUpload} />
 						) : (
+							// show a DocUpload component with handlePdf and handleFileUpload functions
 							<DocUpload handlePdf={handlepdf} handleFileUpload={handleFileUpload} />
 						)
 					) : (
+						// If the user is logged out, display the following content
 						<>
 							<p className='text-center text-2xl lg:text-2xl mt-24'>
 								Sign Up / Sign In with{" "}
