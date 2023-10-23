@@ -1,5 +1,6 @@
 import Styles from "./bits_comp/UploadFile.module.css";
 
+// Defining a functional React component for DocUpload, taking props handlePdf and handleFileUpload
 const DocUpload = ({ handlePdf, handleFileUpload }: { handlePdf: any, handleFileUpload: any }) => {
 	return (
 		<div className='flex flex-col'>
@@ -11,6 +12,7 @@ const DocUpload = ({ handlePdf, handleFileUpload }: { handlePdf: any, handleFile
 				dull. it's a blast!" 😎
 			</p>
 			<div className='flex my-6 justify-center p-5'>
+				      {/* File Upload Form */}
 				<form onSubmit={handlePdf}>
 					<div className={Styles.input_div} id='file'>
 						<input className={Styles.input} name='PDF' type='file' accept="application/pdf" onChange={handleFileUpload}/>
