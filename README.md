@@ -11,7 +11,7 @@
 7. [File Upload](#file-upload)
 8. [Frontend and UI](#frontend-and-ui)
 9. [API Endpoints](#api-endpoints)
-10. [Acknowledgments](#acknowledgments)
+10. [Project Challenges](#acknowledgments)
 
 ## Introduction
 
