@@ -13,7 +13,7 @@ Ilcome to the README for my exciting project! In this project, I've combined var
 7. [File Upload](#file-upload)
 8. [Frontend and UI](#frontend-and-ui)
 9. [API Endpoints](#api-endpoints)
-10. [Acknowledgments](#acknowledgments)
+10. [Project Challenges](#Project_Challenges)
 
 ## Introduction
 
