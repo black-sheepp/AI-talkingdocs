@@ -28,9 +28,9 @@ module.exports.pdfUpload = async function (req, res) {
 		}
 
 		if (req.file) {
-			if (user.pdf_location) {
-				fs.unlinkSync(path.join(__dirname, "..", "/Public/Upload", user.pdf_location));
-			}
+			// if (user.pdf_location) {
+			// 	fs.unlinkSync(path.join(__dirname, "..", "/Public/Upload", user.pdf_location));
+			// }
 			user.pdf_location = "/" + req.file.filename;
 		}
 		user.save();
