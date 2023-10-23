@@ -5,14 +5,15 @@ import { ModeToggle } from "../components/mode-toggle";
 import { SignIn } from "./bits_comp/SignIn";
 import { SignUp } from "./bits_comp/SignUp";
 
+// Define a TypeScript interface to specify the expected props for the Nav component
 interface NavProps {
-  handleForm: (e: React.ChangeEvent<HTMLInputElement>) => void;
-  handleSubmit: (e: React.FormEvent) => void;
-  username: string | null;
-  handlelogout: () => void;
-  handleSignIn: (e: React.FormEvent) => void;
-  logoutStatus: boolean;
-  fetchToken: string | null;
+  handleForm: (e: React.ChangeEvent<HTMLInputElement>) => void; // Function to handle form changes
+  handleSubmit: (e: React.FormEvent) => void; // Function to handle form submissions
+  username: string | null; // User's username, which can be a string or null
+  handlelogout: () => void; // Function to handle user logout
+  handleSignIn: (e: React.FormEvent) => void; // Function to handle sign-in form submissions
+  logoutStatus: boolean; // A boolean representing the user's logout status
+  fetchToken: string | null; // A fetched token, which can be a string or null
 }
 
 const Nav: React.FC<NavProps> = ({
@@ -31,15 +32,18 @@ const Nav: React.FC<NavProps> = ({
         <span className="self-center text-2xl font-semibold">&nbsp;&nbsp;TalkingDoc</span>
       </a>
       <div className="flex justify-center gap-4">
+        {/* Conditional rendering based on logout status and fetchToken */}
         { !logoutStatus &&fetchToken ? (
+          // Display the dropdown menu if logged in
           <DropdownMenuDemo username={username} handlelogout={handlelogout} />
         ) : (
           <>
+          {/* Render the sign-in and sing-up form in navbar */}
             <SignIn handleForm={handleForm} handleSignIn={handleSignIn} />
             <SignUp handleForm={handleForm} handleSubmit={handleSubmit} />
           </>
         )}
-        <ModeToggle />
+        <ModeToggle /> {/* Render the mode toggle component for changing display modes */}
       </div>
     </div>
   );
