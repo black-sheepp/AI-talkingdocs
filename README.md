@@ -6,7 +6,7 @@ When I was given the task to work on the "Talking Docs: Give PDFs a Voice with A
 
 On the back-end, I used Node.js with Express.js for handling requests and MongoDB to store user information and manage user logins. To keep things secure, I used JSON Web Tokens for user authentication, making sure that only authorized users could access certain parts of the project.
 
-For handling PDF files, I used a tool called Multer to store the files and their locations in the database. Then, I processed the uploaded PDFs, breaking them into smaller parts and storing them in a special storage system provided by Langchain.
+For handling PDF files, I used a tool called Multer to store the files and their locations in the database. Then, I processed the uploaded PDFs, breaking them into smaller parts and storing them in a HNSW Vector Store provided by Langchain.
 
 Working with Langchain, which is a new topic for me to explore, was a bit challenging at first. But I found it interesting and decided to dive deeper into it. Through research and learning, I managed to overcome the challenges and come up with a unique solution that aligns with the project's goals. This journey expanded my skills and gave me a better understanding of the possibilities offered by advanced technology like Langchain and RAG.
 
