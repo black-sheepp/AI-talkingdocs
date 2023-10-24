@@ -32,6 +32,16 @@ const ChatBot = ({ resetUpload }: { resetUpload: any }) => {
 		}
 	};
 
+	// Function to format string new line "\n" with html <br />
+	const formatTextWithLineBreaks = (text: string) => {
+		return text.split("\n").map((line, index) => (
+			<React.Fragment key={index}>
+				{line}
+				<br />
+			</React.Fragment>
+		));
+	};
+
 	// Effect to log when chatLLM state changes
 	useEffect(() => {
 		console.log("chatLLM changed:", chatLLM);
@@ -48,7 +58,11 @@ const ChatBot = ({ resetUpload }: { resetUpload: any }) => {
 				{chatQuery.map((userQuery, index) => (
 					<div key={index} id='messages' className={Styles.messages}>
 						<div className={`${Styles.chat} ${Styles.me}`}>{userQuery}</div>
-						{chatLLM[index] ? <div className={Styles.chat}>{chatLLM[index]}</div> : <TextLoader />}
+						{chatLLM[index] ? (
+							<div className={Styles.chat}>{formatTextWithLineBreaks(chatLLM[index])}</div>
+						) : (
+							<TextLoader />
+						)}
 					</div>
 				))}
 			</div>
