@@ -15,7 +15,7 @@ const DocUpload = ({ handlePdf, handleFileUpload }: { handlePdf: any, handleFile
 				      {/* File Upload Form */}
 				<form onSubmit={handlePdf}>
 					<div className={Styles.input_div} id='file'>
-						<input className={Styles.input} name='PDF' type='file' accept="application/pdf" onChange={handleFileUpload}/>
+						<input className={Styles.input} name='PDF' type='file' accept="application/pdf" onChange={handleFileUpload} required/>
 						<svg
 							xmlns='http://www.w3.org/2000/svg'
 							width='2em'
