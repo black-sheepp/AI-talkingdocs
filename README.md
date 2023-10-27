@@ -2,13 +2,11 @@
 
 ## Project Challenges
 
-When I was given the task to work on the "Talking Docs: Give PDFs a Voice with AI" project, my approach was to make it user-friendly and visually appealing. For the front-end part, I used Vite ReactJS along with Tailwind CSS to make the user interface look good, and I used Styled Module CSS to style components. I also added some Shadcn components like Profile Menu, buttons, forms, and input fields to make them look nice.
+For the front-end part, I used Vite ReactJS along with Tailwind CSS to make the user interface look good, and I used Styled Module CSS to style components. I also added some Shadcn components like Profile Menu, buttons, forms, and input fields to make them look nice.
 
 On the back-end, I used Node.js with Express.js for handling requests and MongoDB to store user information and manage user logins. To keep things secure, I used JSON Web Tokens for user authentication, making sure that only authorized users could access certain parts of the project.
 
-For handling PDF files, I used a tool called Multer to store the files and their locations in the database. Then, I processed the uploaded PDFs, breaking them into smaller parts and storing them in a HNSW Vector Store provided by Langchain.
-
-Working with Langchain, which is a new topic for me to explore, was a bit challenging at first. But I found it interesting and decided to dive deeper into it. Through research and learning, I managed to overcome the challenges and come up with a unique solution that aligns with the project's goals. This journey expanded my skills and gave me a better understanding of the possibilities offered by advanced technology like Langchain and RAG.
+For handling PDF files, I used a tool called Multer to store the files and their locations in the database. Then, I processed the uploaded PDFs, breaking them into smaller parts and storing them in a HNSW Vector Store provided by Langchain. This journey expanded my skills and gave me a better understanding of the possibilities offered by advanced technology like Langchain and RAG.
 
 
 ## Table of Contents
@@ -91,10 +89,24 @@ User information is stored in MongoDB, a flexible NoSQL database. User data is s
 I have used Multer, a middleware for handling file uploads, allowing users to upload files like images or documents. This feature enhances the user experience by supporting multimedia content.
 
 ## Frontend and UI
-
 The frontend is designed with a user-friendly interface using Tailwind CSS and the Shadcn Framework. It offers a responsive and visually appealing experience for users.
 
 ## API Endpoints
 
 The backend provides various API endpoints to manage user data, authentication, and file uploads. These endpoints are documented in the code, and you can find more details in the backend's codebase.
+
+<img width="1680" alt="Screenshot 2023-10-27 at 5 06 37 PM" src="https://github.com/black-sheepp/fullstack-talkingdocs/assets/53144060/6ade8be0-ffee-4bd4-aa42-75ec425c3c38">
+<img width="1680" alt="Screenshot 2023-10-27 at 5 01 13 PM" src="https://github.com/black-sheepp/fullstack-talkingdocs/assets/53144060/ca270f41-ca89-4c8d-844e-08c57f8a840e">
+<img width="1680" alt="Screenshot 2023-10-27 at 5 01 24 PM" src="https://github.com/black-sheepp/fullstack-talkingdocs/assets/53144060/06406733-250f-40d7-bfd3-26347100d172">
+<img width="1680" alt="Screenshot 2023-10-27 at 5 02 12 PM" src="https://github.com/black-sheepp/fullstack-talkingdocs/assets/53144060/76e46926-24f8-41ba-a5bc-4f48bb738a83">
+<img width="1680" alt="Screenshot 2023-10-27 at 5 02 30 PM" src="https://github.com/black-sheepp/fullstack-talkingdocs/assets/53144060/cf0d01bb-66ac-403a-a1a4-993fa13d5307">
+<img width="1680" alt="Screenshot 2023-10-27 at 5 02 54 PM" src="https://github.com/black-sheepp/fullstack-talkingdocs/assets/53144060/6ab96faa-52f5-4dc0-8ef2-4f19b74288f5">
+<img width="1680" alt="Screenshot 2023-10-27 at 5 03 15 PM" src="https://github.com/black-sheepp/fullstack-talkingdocs/assets/53144060/7ddfd9d0-8c71-4c8d-a2fb-aeb1c9ffb0e9">
+<img width="1680" alt="Screenshot 2023-10-27 at 5 04 45 PM" src="https://github.com/black-sheepp/fullstack-talkingdocs/assets/53144060/614127d9-c181-4537-bc6e-ec7294efa745">
+<img width="1680" alt="Screenshot 2023-10-27 at 5 05 24 PM" src="https://github.com/black-sheepp/fullstack-talkingdocs/assets/53144060/f8d535ec-3313-4096-9fb1-4dfdc60c25fe">
+<img width="1680" alt="Screenshot 2023-10-27 at 5 05 31 PM" src="https://github.com/black-sheepp/fullstack-talkingdocs/assets/53144060/72e30e22-f520-44b1-9d0c-f0746802b811">
+<img width="1680" alt="Screenshot 2023-10-27 at 5 06 09 PM" src="https://github.com/black-sheepp/fullstack-talkingdocs/assets/53144060/66ce2c33-9c97-4c03-9db4-19d9ec102735">
+<img width="1680" alt="Screenshot 2023-10-27 at 5 08 06 PM" src="https://github.com/black-sheepp/fullstack-talkingdocs/assets/53144060/7e0a6c55-ec13-482a-a2d8-861e30dd6378">
+<img width="1680" alt="Screenshot 2023-10-27 at 5 07 53 PM" src="https://github.com/black-sheepp/fullstack-talkingdocs/assets/53144060/398a437e-7c4f-4aeb-b994-dbe57fe56a01">
+
 
