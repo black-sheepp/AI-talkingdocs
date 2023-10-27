@@ -95,7 +95,5 @@ The frontend is designed with a user-friendly interface using Tailwind CSS and t
 
 The backend provides various API endpoints to manage user data, authentication, and file uploads. These endpoints are documented in the code, and you can find more details in the backend's codebase.
 
-<img width="1680" alt="Screenshot 2023-10-27 at 5 08 06 PM" src="https://github.com/black-sheepp/fullstack-talkingdocs/assets/53144060/7e0a6c55-ec13-482a-a2d8-861e30dd6378">
-<img width="1680" alt="Screenshot 2023-10-27 at 5 07 53 PM" src="https://github.com/black-sheepp/fullstack-talkingdocs/assets/53144060/398a437e-7c4f-4aeb-b994-dbe57fe56a01">
 
 
