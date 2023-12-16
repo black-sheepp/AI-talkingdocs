@@ -141,6 +141,7 @@ function App() {
 
 		// Cxreate a FormData object and append the selected PDF file
 		const formData = new FormData();
+		//@ts-ignore
 		formData.append("pdf_location", pdfFile);
 
 		try {
