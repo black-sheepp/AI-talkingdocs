@@ -26,7 +26,7 @@ const Nav: React.FC<NavProps> = ({
   fetchToken,
 }) => {
   return (
-    <div className="w-full flex flex-wrap items-center justify-between mx-0 px-6 lg:px-20 p-4 fixed top-0 left-0 right-0 z-10 bg-white dark:bg-[#020817]">
+    <div className="w-screen bg-transparent  font-heading2 tracking-wider overflow-hidden flex flex-wrap items-center justify-between mx-0 border-b-[0.2px] border-white/10 px-6 lg:px-20 p-4 fixed top-0 left-0 right-0 z-10 backdrop-blur-md dark:bg-transparent ">
       <a className="flex items-center">
         <Logo />
         <span className="self-center text-2xl font-semibold">&nbsp;&nbsp;TalkingDoc</span>

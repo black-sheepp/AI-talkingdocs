@@ -6,6 +6,7 @@ import { ThemeProvider } from "@/components/theme-provider";
 import { useEffect, useState } from "react";
 import PDFLoader from "./components/bits_comp/PDFLoader";
 import axios from "axios";
+import Background from "./components/background/background";
 
 function App() {
 	const [form, setForm] = useState({}); // User form data
@@ -138,7 +139,7 @@ function App() {
 		event.preventDefault();
 		setIsLoading(true);
 
-		// Create a FormData object and append the selected PDF file
+		// Cxreate a FormData object and append the selected PDF file
 		const formData = new FormData();
 		formData.append("pdf_location", pdfFile);
 
@@ -163,7 +164,7 @@ function App() {
 	};
 	return (
 		<ThemeProvider defaultTheme='dark' storageKey='vite-ui-theme'>
-			<div className='h-screen'>
+			<div className='h-screen overflow-hidden'>
 				<Nav
 					handleForm={handleForm}
 					handleSubmit={handleSubmit}
@@ -173,6 +174,7 @@ function App() {
 					fetchToken={fetchToken()}
 					logoutStatus={logout}
 				/>
+				<Background />
 				<div className='flex flex-col justify-center px-8 mt-10 lg:px-20'>
 					{!logout ? ( // If the user is not logged out
 						isLoading ? ( // If data is loading, show a PDFLoader component
