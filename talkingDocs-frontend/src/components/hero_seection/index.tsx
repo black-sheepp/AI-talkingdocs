@@ -60,7 +60,7 @@ const HeroSection = () => {
               className="-mb-4"
             >
               <a href="/">
-                <button className="group mx-auto mt-6 text-lg flex max-w-fit items-center justify-center space-x-2 rounded-full border border-black bg-gradient-to-tr from-indigo-400 via-indigo-400/80 to-purple-600   px-5 py-3  text-white transition-colors hover:bg-white hover:duration-300 hover:shadow-yellow-600 ">
+                <button className="group mx-auto mt-6 text-lg flex max-w-fit items-center justify-center space-x-2 rounded-full border dark:border-black bg-gradient-to-tr from-indigo-400 via-indigo-400/80 to-purple-600   px-5 py-3  text-white transition-colors hover:bg-white hover:duration-300 hover:shadow-yellow-600 ">
                   {" "}
                   Start Here
                 </button>
@@ -71,7 +71,7 @@ const HeroSection = () => {
               variants={FADE_DOWN_ANIMATION_VARIANTS}
               className="-mb-4"
             >
-              <button className="group mx-auto mt-6 flex max-w-fit items-center justify-center space-x-2 rounded-full  border-black  bg-gradient-to-tr from-indigo-200 via-indigo-200/80 to-purple-400 border-[0.5px]">
+              <button className="group mx-auto mt-6 flex max-w-fit items-center justify-center space-x-2 rounded-full border-transparent  dark:border-black  bg-gradient-to-tr from-indigo-200 via-indigo-200/80 to-purple-400 dark:border-[0.5px]">
                 {/* <Upload /> */}
               </button>
             </motion.div>
