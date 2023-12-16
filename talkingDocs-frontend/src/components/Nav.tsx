@@ -29,7 +29,9 @@ const Nav: React.FC<NavProps> = ({
     <div className="w-screen bg-transparent  font-heading2 tracking-wider overflow-hidden flex flex-wrap items-center justify-between mx-0 border-b-[0.2px] border-white/10 px-6 lg:px-20 p-4 fixed top-0 left-0 right-0 z-10 backdrop-blur-md dark:bg-transparent ">
       <a className="flex items-center">
         <Logo />
-        <span className="self-center text-2xl font-semibold">&nbsp;&nbsp;TalkingDoc</span>
+        <span className="self-center text-2xl font-semibold">&nbsp;&nbsp;Talking<span className="bg-gradient-to-tr from-indigo-200 via-indigo-200/80 to-purple-400 text-transparent bg-clip-text">
+            Docs
+          </span> </span>
       </a>
       <div className="flex justify-center gap-4">
         {/* Conditional rendering based on logout status and fetchToken */}
