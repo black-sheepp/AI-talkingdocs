@@ -170,7 +170,7 @@ function App() {
   };
   return (
     <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
-      <div className="h-screen overflow-hidden">
+      <div className="h-screen overflow-hidden font-heading2">
         <Nav
           handleForm={handleForm}
           handleSubmit={handleSubmit}

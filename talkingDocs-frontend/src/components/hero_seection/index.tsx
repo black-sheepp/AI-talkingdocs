@@ -1,4 +1,4 @@
-import { motion } from "framer-motion";
+    import { motion } from "framer-motion";
 import { FADE_DOWN_ANIMATION_VARIANTS } from "@/lib/utils";
 import Background from "../background/background";
 
@@ -40,7 +40,7 @@ const HeroSection = () => {
           </p>
         </motion.a> */}
         <motion.h1
-          className="z-50 text-gradient mb-4 translate-y-[30%] text-center text-5xl bg-gradient-to-tr from-zinc-400/20 via-white/90 text-transparent bg-clip-text to-white/10 sm:text-6xl  md:text-8xl lg:text-9xl [transition:transform_1000ms_cubic-bezier(0.3,1.17,0.55,0.99)0s] [.is-visible_&]:translate-y-"
+          className="z-50 text-gradient mb-4 translate-y-[30%] text-center text-5xl bg-gradient-to-tr from-black to-black/20 dark:from-zinc-400/20 dark:via-white/90 text-transparent bg-clip-text dark:to-white/10 sm:text-6xl  md:text-8xl lg:text-9xl [transition:transform_1000ms_cubic-bezier(0.3,1.17,0.55,0.99)0s] [.is-visible_&]:translate-y-"
           variants={FADE_DOWN_ANIMATION_VARIANTS}
         >
           Let the    <span className="bg-gradient-to-tr from-indigo-200 via-indigo-200/80 to-purple-400 text-transparent bg-clip-text">
@@ -52,7 +52,7 @@ const HeroSection = () => {
           .
         </motion.h1>
         <motion.p
-          className="mt-2 font-heading2 text-muted-foreground text-center text-gray-300 md:text-xl font-display2 text-4xl bg-gradient-to-tr from-zinc-600/90 via-zinc-500/80 to-black/90  bg-clip-text "
+          className="mt-2 font-heading2 text-muted-foreground text-center dark:text-gray-300 md:text-xl font-display2 text-4xl bg-gradient-to-tr from-zinc-600/90 via-zinc-500/80 to-black/90  bg-clip-text "
           variants={FADE_DOWN_ANIMATION_VARIANTS}
         >
           Let the AI helps you to get analytics about your DOCS.
@@ -62,7 +62,7 @@ const HeroSection = () => {
               className="-mb-4"
             >
               <a href="/">
-                <button className="group mx-auto mt-6 text-lg flex max-w-fit items-center justify-center space-x-2 rounded-full border border-black bg-black px-5 py-3  text-white transition-colors hover:bg-white hover:text-black">
+                <button className="group mx-auto mt-6 text-lg flex max-w-fit items-center justify-center space-x-2 rounded-full border border-black bg-gradient-to-tr from-indigo-400 via-indigo-400/80 to-purple-600   px-5 py-3  text-white transition-colors hover:bg-white hover:duration-300 hover:shadow-yellow-600 ">
                   {" "}
                   Start Here
                 </button>
@@ -73,7 +73,7 @@ const HeroSection = () => {
               variants={FADE_DOWN_ANIMATION_VARIANTS}
               className="-mb-4"
             >
-              <button className="group mx-auto mt-6 flex max-w-fit items-center justify-center space-x-2 rounded-full  border-black  bg-transparent border-[0.5px]">
+              <button className="group mx-auto mt-6 flex max-w-fit items-center justify-center space-x-2 rounded-full  border-black  bg-gradient-to-tr from-indigo-200 via-indigo-200/80 to-purple-400 border-[0.5px]">
                 {/* <Upload /> */}
               </button>
             </motion.div>
