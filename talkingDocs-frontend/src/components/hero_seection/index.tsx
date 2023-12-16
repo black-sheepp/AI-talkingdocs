@@ -1,16 +1,13 @@
-    import { motion } from "framer-motion";
+import { motion } from "framer-motion";
 import { FADE_DOWN_ANIMATION_VARIANTS } from "@/lib/utils";
 import Background from "../background/background";
 
 const HeroSection = () => {
   return (
-    <div
-      className="min-h-screen  font-heading flex flex-col justify-center items-center"
-    
-    >
-          <div className="overflow-hidden w-screen">
-          <Background />
-        </div>
+    <div className="min-h-screen  font-heading flex flex-col justify-center items-center">
+      <div className="overflow-hidden w-screen">
+        <Background />
+      </div>
       <motion.div
         className="z-50 max-w-7xl px-5 xl:px-0 font-display2"
         initial="hidden"
@@ -26,7 +23,6 @@ const HeroSection = () => {
           },
         }}
       >
-      
         {/* <motion.a
           variants={FADE_DOWN_ANIMATION_VARIANTS}
           href="https://twitter.com/steventey/status/1616505632001232896"
@@ -43,9 +39,11 @@ const HeroSection = () => {
           className="z-50 text-gradient mb-4 translate-y-[30%] text-center text-5xl bg-gradient-to-tr from-black to-black/20 dark:from-zinc-400/20 dark:via-white/90 text-transparent bg-clip-text dark:to-white/10 sm:text-6xl  md:text-8xl lg:text-9xl [transition:transform_1000ms_cubic-bezier(0.3,1.17,0.55,0.99)0s] [.is-visible_&]:translate-y-"
           variants={FADE_DOWN_ANIMATION_VARIANTS}
         >
-          Let the    <span className="bg-gradient-to-tr from-indigo-200 via-indigo-200/80 to-purple-400 text-transparent bg-clip-text">
+          Let the{" "}
+          <span className="bg-gradient-to-tr from-indigo-200 via-indigo-200/80 to-purple-400 text-transparent bg-clip-text">
             DOCS talk
-          </span>  about the{" "}
+          </span>{" "}
+          about the{" "}
           <span className="bg-gradient-to-tr from-indigo-200 via-indigo-200/80 to-purple-400 text-transparent bg-clip-text">
             everything
           </span>
