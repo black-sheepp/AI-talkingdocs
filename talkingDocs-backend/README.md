@@ -2,7 +2,7 @@
 
 ## Project Challenges
 
-When I was given the task to work on the "Talking Docs: Give PDFs a Voice with AI" project, my approach was to make it user-friendly and visually appealing. For the front-end part, I used Vite ReactJS along with Tailwind CSS to make the user interface look good, and I used Styled Module CSS to style components. I also added some shadow effects to buttons, forms, and input fields to make them look nice.
+For the front-end part, I used Vite ReactJS along with Tailwind CSS to make the user interface look good, and I used Styled Module CSS to style components. I also added some shadow effects to buttons, forms, and input fields to make them look nice.
 
 On the back-end, I used Node.js with Express.js for handling requests and MongoDB to store user information and manage user logins. To keep things secure, I used JSON Web Tokens for user authentication, making sure that only authorized users could access certain parts of the project.
 
