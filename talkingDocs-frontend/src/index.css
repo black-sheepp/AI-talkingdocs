@@ -2,6 +2,19 @@
 @tailwind components;
 @tailwind utilities;
 
+
+@font-face {
+  font-family: 'Cals';
+  src: local('Cals') , url(../public/fonts/CalSans-SemiBold.ttf) format('opentype');
+}
+@font-face {
+  font-family: 'Product';
+  src: local('Product') , url(../public/fonts/product-font.ttf) format('opentype');
+}
+
+
+
+
 @layer base {
   :root {
     --background: 0 0% 100%;
@@ -74,4 +87,15 @@
   body {
     @apply bg-background text-foreground;
   }
+}
+
+/* For Webkit-based browsers (Chrome, Safari and Opera) */
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+/* For IE, Edge and Firefox */
+.scrollbar-hide {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
 }
