@@ -43,15 +43,13 @@ export function Navbar() {
             <div className="h-8 w-8 animate-pulse bg-muted rounded-full" />
           ) : session ? (
             <DropdownMenu>
-              <DropdownMenuTrigger asChild>
-                <Button variant="ghost" className="relative h-8 w-8 rounded-full">
-                  <Avatar className="h-8 w-8">
-                    <AvatarImage src={session.user?.image ?? ""} alt={session.user?.name ?? ""} />
-                    <AvatarFallback>{session.user?.name?.[0]}</AvatarFallback>
-                  </Avatar>
-                </Button>
+              <DropdownMenuTrigger className="relative h-8 w-8 rounded-full flex items-center justify-center overflow-hidden ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2">
+                <Avatar className="h-8 w-8">
+                  <AvatarImage src={session.user?.image ?? ""} alt={session.user?.name ?? ""} />
+                  <AvatarFallback>{session.user?.name?.[0]}</AvatarFallback>
+                </Avatar>
               </DropdownMenuTrigger>
-              <DropdownMenuContent className="w-56" align="end" forceMount>
+              <DropdownMenuContent className="w-56" align="end">
                 <DropdownMenuLabel className="font-normal">
                   <div className="flex flex-col space-y-1">
                     <p className="text-sm font-medium leading-none">{session.user?.name}</p>
