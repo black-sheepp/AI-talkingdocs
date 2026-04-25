@@ -5,7 +5,7 @@ import { UploadCloud, File, CheckCircle2, AlertCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useSession } from "next-auth/react";
 
-export function FileUpload() {
+export function FileUpload({ onUploadSuccess }: { onUploadSuccess: (doc: any) => void }) {
   const { data: session } = useSession();
   const [file, setFile] = useState<File | null>(null);
   const [isUploading, setIsUploading] = useState(false);
@@ -43,6 +43,9 @@ export function FileUpload() {
 
       setStatus("success");
       setFile(null); // Reset after successful upload
+      if (data.document) {
+        onUploadSuccess(data.document);
+      }
     } catch (error: any) {
       console.error(error);
       setStatus("error");
