@@ -1,6 +1,6 @@
 "use client";
 
-import { useChat } from "ai/react";
+import { useChat, Message } from "ai/react";
 import { Send, Bot, User, Loader2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -51,7 +51,7 @@ export function ChatInterface({ namespace, fileName }: ChatInterfaceProps) {
           </div>
         ) : (
           <div className="space-y-6">
-            {messages.map((m) => (
+            {messages.map((m: Message) => (
               <div
                 key={m.id}
                 className={`flex gap-3 ${

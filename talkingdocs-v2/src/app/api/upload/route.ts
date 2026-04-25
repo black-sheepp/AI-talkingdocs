@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { getServerSession } from "next-auth/react";
+import { getServerSession } from "next-auth";
 import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 import connectToDatabase from "@/lib/mongoose";
 import Document from "@/models/Document";
@@ -10,7 +10,9 @@ import { v4 as uuidv4 } from "uuid";
 import { Pinecone } from "@pinecone-database/pinecone";
 import { OpenAIEmbeddings } from "@langchain/openai";
 import { PineconeStore } from "@langchain/pinecone";
+// @ts-expect-error - no types available
 import { RecursiveCharacterTextSplitter } from "langchain/text_splitter";
+// @ts-expect-error - no default export type
 import pdfParse from "pdf-parse";
 
 // Initialize Pinecone

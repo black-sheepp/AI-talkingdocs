@@ -1,11 +1,12 @@
 import { NextRequest } from "next/server";
-import { Message as VercelChatMessage } from "ai";
 import { ChatOpenAI } from "@langchain/openai";
 import { PromptTemplate } from "@langchain/core/prompts";
 import { PineconeStore } from "@langchain/pinecone";
 import { OpenAIEmbeddings } from "@langchain/openai";
 import { Pinecone } from "@pinecone-database/pinecone";
+// @ts-expect-error - types resolution issue in bundler mode
 import { createStuffDocumentsChain } from "langchain/chains/combine_documents";
+// @ts-expect-error - types resolution issue in bundler mode
 import { createRetrievalChain } from "langchain/chains/retrieval";
 
 const pc = new Pinecone({
