@@ -1,24 +1,52 @@
 "use client";
 
-import { useChat, Message } from "ai/react";
+import { useChat, Message as ChatMessage } from "ai/react";
 import { Send, Bot, User, Loader2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { ScrollArea } from "@/components/ui/scroll-area";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
 interface ChatInterfaceProps {
-  documentId?: string;
+  documentId: string;
   namespace: string;
   fileName: string;
 }
 
-export function ChatInterface({ namespace, fileName }: ChatInterfaceProps) {
+export function ChatInterface({ documentId, namespace, fileName }: ChatInterfaceProps) {
+  const [initialMessages, setInitialMessages] = useState<ChatMessage[]>([]);
+  const [isHistoryLoading, setIsHistoryLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchHistory = async () => {
+      try {
+        const res = await fetch(`/api/chat/history?documentId=${documentId}`);
+        const data = await res.json();
+        if (Array.isArray(data)) {
+          setInitialMessages(data.map((m: any) => ({
+            id: m._id,
+            role: m.role,
+            content: m.content,
+            createdAt: new Date(m.createdAt)
+          })));
+        }
+      } catch (error) {
+        console.error("Failed to fetch history", error);
+      } finally {
+        setIsHistoryLoading(false);
+      }
+    };
+
+    fetchHistory();
+  }, [documentId]);
+
   const { messages, input, handleInputChange, handleSubmit, isLoading } = useChat({
     api: "/api/chat",
     body: {
       namespace,
+      documentId,
     },
+    initialMessages,
   });
 
   const scrollRef = useRef<HTMLDivElement>(null);
@@ -31,7 +59,7 @@ export function ChatInterface({ namespace, fileName }: ChatInterfaceProps) {
   }, [messages]);
 
   return (
-    <div className="flex flex-col h-[600px] w-full max-w-4xl mx-auto border rounded-xl overflow-hidden bg-card shadow-sm">
+    <div className="flex flex-col h-full w-full max-w-4xl mx-auto border rounded-xl overflow-hidden bg-card shadow-sm">
       {/* Header */}
       <div className="bg-muted/50 px-4 py-3 border-b flex items-center justify-between">
         <div>
@@ -44,14 +72,19 @@ export function ChatInterface({ namespace, fileName }: ChatInterfaceProps) {
 
       {/* Chat Area */}
       <ScrollArea className="flex-1 p-4" ref={scrollRef}>
-        {messages.length === 0 ? (
+        {isHistoryLoading ? (
+          <div className="h-full flex flex-col items-center justify-center space-y-2 mt-20">
+            <Loader2 className="w-8 h-8 animate-spin text-primary" />
+            <p className="text-sm text-muted-foreground">Loading your conversation...</p>
+          </div>
+        ) : messages.length === 0 ? (
           <div className="h-full flex flex-col items-center justify-center text-muted-foreground mt-20">
             <Bot className="w-12 h-12 mb-4 opacity-20" />
             <p>Ask me anything about this document!</p>
           </div>
         ) : (
           <div className="space-y-6">
-            {messages.map((m: Message) => (
+            {messages.map((m: ChatMessage) => (
               <div
                 key={m.id}
                 className={`flex gap-3 ${
@@ -66,7 +99,7 @@ export function ChatInterface({ namespace, fileName }: ChatInterfaceProps) {
                   {m.role === "user" ? <User size={16} /> : <Bot size={16} />}
                 </div>
                 <div
-                  className={`max-w-[80%] rounded-lg p-3 text-sm ${
+                  className={`max-w-[80%] rounded-lg p-3 text-sm shadow-sm ${
                     m.role === "user"
                       ? "bg-primary text-primary-foreground"
                       : "bg-muted text-foreground"
@@ -81,8 +114,8 @@ export function ChatInterface({ namespace, fileName }: ChatInterfaceProps) {
                 <div className="w-8 h-8 rounded-full bg-muted flex items-center justify-center shrink-0">
                   <Bot size={16} />
                 </div>
-                <div className="bg-muted rounded-lg p-3 text-sm flex items-center gap-2">
-                  <Loader2 className="w-4 h-4 animate-spin" />
+                <div className="bg-muted rounded-lg p-3 text-sm flex items-center gap-2 shadow-sm">
+                  <Loader2 className="w-4 h-4 animate-spin text-primary" />
                   Thinking...
                 </div>
               </div>
@@ -102,9 +135,9 @@ export function ChatInterface({ namespace, fileName }: ChatInterfaceProps) {
             onChange={handleInputChange}
             placeholder="Ask a question about your document..."
             className="flex-1"
-            disabled={isLoading}
+            disabled={isLoading || isHistoryLoading}
           />
-          <Button type="submit" size="icon" disabled={isLoading || !input.trim()}>
+          <Button type="submit" size="icon" disabled={isLoading || isHistoryLoading || !input.trim()}>
             <Send className="w-4 h-4" />
           </Button>
         </form>

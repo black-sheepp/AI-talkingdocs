@@ -8,6 +8,8 @@ import { Pinecone } from "@pinecone-database/pinecone";
 import { createStuffDocumentsChain } from "langchain/chains/combine_documents";
 // @ts-expect-error - types resolution issue in bundler mode
 import { createRetrievalChain } from "langchain/chains/retrieval";
+import Message from "@/models/Message";
+import connectToDatabase from "@/lib/mongoose";
 
 const pc = new Pinecone({
   apiKey: process.env.PINECONE_API_KEY!,
@@ -15,13 +17,21 @@ const pc = new Pinecone({
 
 export async function POST(req: NextRequest) {
   try {
-    const { messages, namespace } = await req.json();
+    const { messages, namespace, documentId } = await req.json();
 
-    if (!namespace) {
-      return new Response(JSON.stringify({ error: "Missing document namespace" }), { status: 400 });
+    if (!namespace || !documentId) {
+      return new Response(JSON.stringify({ error: "Missing document information" }), { status: 400 });
     }
 
     const currentMessageContent = messages[messages.length - 1].content;
+
+    // Save user message to DB
+    await connectToDatabase();
+    await Message.create({
+      documentId,
+      role: "user",
+      content: currentMessageContent,
+    });
 
     // Initialize Vector Store for Retrieval
     const pineconeIndex = pc.Index(process.env.PINECONE_INDEX!);
@@ -74,11 +84,24 @@ export async function POST(req: NextRequest) {
     // Create a readable stream that the Vercel AI SDK frontend can consume
     const readableStream = new ReadableStream({
       async start(controller) {
+        let fullResponse = "";
         for await (const chunk of stream) {
           if (chunk.answer) {
-            controller.enqueue(new TextEncoder().encode(chunk.answer));
+            const text = chunk.answer;
+            fullResponse += text;
+            controller.enqueue(new TextEncoder().encode(text));
           }
         }
+        
+        // Save assistant response to DB
+        if (fullResponse) {
+          await Message.create({
+            documentId,
+            role: "assistant",
+            content: fullResponse,
+          });
+        }
+
         controller.close();
       },
     });
